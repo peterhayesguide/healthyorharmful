@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Healthy or Harmful — Peter Hayes</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F2;
+    --warm-white: #F5F0E8;
+    --blush: #E8D5C4;
+    --terracotta: #C4714A;
+    --deep: #2C1F14;
+    --mid: #6B5240;
+    --light-mid: #A08060;
+    --sage: #8A9E8C;
+    --gold: #C9A86C;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--deep);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    background: var(--deep);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 80px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-left::after {
+    content: '';
+    position: absolute;
+    right: -40px;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    background: var(--deep);
+    clip-path: polygon(0 0, 0 100%, 100% 100%);
+    z-index: 2;
+  }
+
+  .brand {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 48px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--blush);
+    margin-bottom: 24px;
+    opacity: 0.8;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 5vw, 68px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: #FAF7F2;
+    margin-bottom: 32px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--blush);
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(250,247,242,0.65);
+    margin-bottom: 48px;
+    max-width: 400px;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: var(--terracotta);
+    color: #FAF7F2;
+    text-decoration: none;
+    padding: 18px 40px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    position: relative;
+    align-self: flex-start;
+  }
+
+  .hero-cta:hover {
+    background: #B5633C;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(196,113,74,0.3);
+  }
+
+  .hero-price-note {
+    margin-top: 16px;
+    font-size: 12px;
+    color: rgba(250,247,242,0.4);
+    letter-spacing: 1px;
+  }
+
+  .hero-right {
+    background: var(--warm-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 80px 80px 100px;
+    position: relative;
+  }
+
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(232,213,196,0.4) 0%, transparent 70%);
+  }
+
+  .book-visual {
+    width: 280px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .book-cover {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--deep);
+    border-radius: 2px 8px 8px 2px;
+    box-shadow: -8px 8px 0 rgba(44,31,20,0.15), 20px 20px 60px rgba(44,31,20,0.25), 0 0 0 1px rgba(44,31,20,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .book-cover::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 20px;
+    background: linear-gradient(to right, rgba(255,255,255,0.05), transparent);
+  }
+
+  .book-cover-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .book-cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: #FAF7F2;
+    text-align: center;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .book-cover-title em {
+    font-style: italic;
+    color: var(--blush);
+    display: block;
+    font-size: 22px;
+  }
+
+  .book-cover-sub {
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .book-cover-author {
+    position: absolute;
+    bottom: 24px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: rgba(250,247,242,0.4);
+    text-transform: uppercase;
+  }
+
+  .badge {
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    width: 72px;
+    height: 72px;
+    background: var(--terracotta);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(196,113,74,0.4);
+  }
+
+  .badge-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: white;
+    line-height: 1;
+  }
+
+  .badge-usd {
+    font-size: 9px;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 1px;
+  }
+
+  /* PAIN SECTION */
+  .pain-section {
+    background: var(--warm-white);
+    padding: 100px 80px;
+    position: relative;
+  }
+
+  .pain-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--blush), transparent);
+  }
+
+  .section-inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--deep);
+    margin-bottom: 32px;
+  }
+
+  .section-title em { font-style: italic; color: var(--terracotta); }
+
+  .pain-intro {
+    font-size: 17px;
+    line-height: 1.9;
+    color: var(--mid);
+    margin-bottom: 48px;
+  }
+
+  .pain-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .pain-item {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 20px;
+    align-items: start;
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(232,213,196,0.5);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+  }
+
+  .pain-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .pain-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--terracotta);
+    margin-top: 9px;
+    justify-self: center;
+  }
+
+  .pain-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--mid);
+  }
+
+  .pain-text strong {
+    color: var(--deep);
+    font-weight: 500;
+  }
+
+  /* WHAT IS SECTION */
+  .what-section {
+    background: var(--deep);
+    padding: 100px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .what-section::before {
+    content: '"';
+    position: absolute;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 400px;
+    color: rgba(255,255,255,0.02);
+    top: -80px;
+    right: -20px;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .what-section .section-title { color: var(--cream); }
+  .what-section .section-label { color: var(--gold); }
+
+  .what-desc {
+    font-size: 17px;
+    line-height: 1.9;
+    color: rgba(250,247,242,0.65);
+    margin-bottom: 60px;
+    max-width: 620px;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .feature-card {
+    background: rgba(250,247,242,0.04);
+    padding: 36px 32px;
+    transition: background 0.3s ease;
+  }
+
+  .feature-card:hover {
+    background: rgba(250,247,242,0.07);
+  }
+
+  .feature-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: rgba(201,168,108,0.2);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .feature-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+  }
+
+  .feature-desc {
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(250,247,242,0.5);
+  }
+
+  /* TESTIMONIALS */
+  .testimonials-section {
+    background: var(--cream);
+    padding: 100px 80px;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 60px;
+    background: var(--blush);
+  }
+
+  .testimonial-card {
+    background: var(--cream);
+    padding: 40px 36px;
+    position: relative;
+  }
+
+  .testimonial-card::before {
+    content: '\201C';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 80px;
+    color: var(--blush);
+    position: absolute;
+    top: 20px;
+    left: 28px;
+    line-height: 1;
+  }
+
+  .testimonial-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--deep);
+    margin-bottom: 20px;
+    padding-top: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .testimonial-name {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--light-mid);
+  }
+
+  /* WHO SECTION */
+  .who-section {
+    background: var(--warm-white);
+    padding: 100px 80px;
+  }
+
+  .who-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .who-left {
+    position: sticky;
+    top: 40px;
+  }
+
+  .author-avatar {
+    width: 120px;
+    height: 120px;
+    background: var(--deep);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .author-initials {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    color: var(--blush);
+    font-weight: 300;
+  }
+
+  .author-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--deep);
+    margin-bottom: 4px;
+  }
+
+  .author-role {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+  }
+
+  .who-text {
+    font-size: 16px;
+    line-height: 1.9;
+    color: var(--mid);
+  }
+
+  .who-text p { margin-bottom: 20px; }
+  .who-text p:last-child { margin-bottom: 0; }
+
+  /* BONUSES */
+  .bonuses-section {
+    background: var(--deep);
+    padding: 100px 80px;
+  }
+
+  .bonuses-section .section-title { color: var(--cream); }
+  .bonuses-section .section-label { color: var(--gold); }
+
+  .bonuses-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 60px;
+  }
+
+  .bonus-card {
+    border: 1px solid rgba(201,168,108,0.2);
+    padding: 40px 36px;
+    position: relative;
+    transition: border-color 0.3s ease;
+  }
+
+  .bonus-card:hover { border-color: rgba(201,168,108,0.5); }
+
+  .bonus-tag {
+    position: absolute;
+    top: -1px; right: 24px;
+    background: var(--gold);
+    color: var(--deep);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+  }
+
+  .bonus-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 300;
+    color: rgba(201,168,108,0.15);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .bonus-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+
+  .bonus-desc {
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(250,247,242,0.5);
+  }
+
+  /* FOR WHO */
+  .forwho-section {
+    background: var(--cream);
+    padding: 100px 80px;
+  }
+
+  .forwho-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 60px;
+    background: var(--blush);
+  }
+
+  .forwho-card {
+    background: var(--cream);
+    padding: 40px 36px;
+  }
+
+  .forwho-card-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .forwho-card.yes .forwho-card-label { color: var(--sage); }
+  .forwho-card.no .forwho-card-label { color: var(--light-mid); }
+
+  .forwho-list { list-style: none; }
+
+  .forwho-list li {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--mid);
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(232,213,196,0.4);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .forwho-list li:last-child { border-bottom: none; }
+
+  .forwho-list li .marker {
+    color: var(--sage);
+    font-weight: 500;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .forwho-card.no .forwho-list li .marker { color: var(--light-mid); }
+
+  /* GUARANTEE */
+  .guarantee-section {
+    background: var(--warm-white);
+    padding: 80px;
+    text-align: center;
+  }
+
+  .guarantee-inner {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .guarantee-icon {
+    width: 80px;
+    height: 80px;
+    border: 1px solid var(--blush);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 32px;
+    font-size: 28px;
+  }
+
+  .guarantee-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--deep);
+    margin-bottom: 20px;
+  }
+
+  .guarantee-text {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--mid);
+  }
+
+  /* CTA FINAL */
+  .cta-section {
+    background: var(--deep);
+    padding: 120px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 100%, rgba(196,113,74,0.12) 0%, transparent 60%);
+  }
+
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.2;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-title em { font-style: italic; color: var(--blush); }
+
+  .cta-sub {
+    font-size: 16px;
+    color: rgba(250,247,242,0.5);
+    margin-bottom: 56px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-box {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: var(--terracotta);
+    color: #FAF7F2;
+    text-decoration: none;
+    padding: 22px 64px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background: #B5633C;
+    transform: translateY(-3px);
+    box-shadow: 0 20px 60px rgba(196,113,74,0.35);
+  }
+
+  .cta-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: rgba(250,247,242,0.4);
+    letter-spacing: 1px;
+  }
+
+  .cta-price strong {
+    color: var(--gold);
+    font-size: 28px;
+    font-weight: 300;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #1A110A;
+    padding: 32px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-brand {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(250,247,242,0.25);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 32px;
+  }
+
+  .footer-links a {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: rgba(250,247,242,0.25);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-links a:hover { color: rgba(250,247,242,0.5); }
+
+  /* DIVIDER */
+  .divider {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin: 32px 0;
+  }
+
+  /* SCROLL ANIMATION */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 60px 40px; }
+    .hero-left::after { display: none; }
+    .hero-right { padding: 60px 40px; }
+    .pain-section, .what-section, .testimonials-section, .who-section,
+    .bonuses-section, .forwho-section, .guarantee-section, .cta-section { padding: 80px 40px; }
+    .features-grid, .testimonials-grid, .bonuses-grid, .forwho-grid { grid-template-columns: 1fr; }
+    .who-inner { grid-template-columns: 1fr; }
+    .who-left { position: static; display: flex; align-items: center; gap: 20px; }
+    footer { flex-direction: column; gap: 20px; padding: 32px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="brand">Peter Hayes | Relationship Guide</div>
+    <p class="hero-eyebrow">You took the quiz. Now go deeper.</p>
+    <h1 class="hero-title">
+      Healthy<br>or<br><em>Harmful?</em>
+    </h1>
+    <p class="hero-subtitle">
+      If the quiz showed you something — this is where you go deeper. A 99-page guide to help you understand what your relationship is really giving you, without judgment, without pressure, at your own pace.
+    </p>
+    <a href="https://pay.hotmart.com/L104437166I" class="hero-cta">Get Instant Access</a>
+    <p class="hero-price-note">Only $12 · PDF · Instant Download · 7-Day Guarantee</p>
+  </div>
+  <div class="hero-right">
+    <div class="book-visual">
+      <div class="book-cover">
+        <div class="book-cover-line"></div>
+        <div class="book-cover-title">Healthy<br>or<br><em>Harmful?</em></div>
+        <div class="book-cover-sub">A Relationship Clarity Guide</div>
+        <div class="book-cover-author">Peter Hayes</div>
+      </div>
+      <div class="badge">
+        <span class="badge-price">$12</span>
+        <span class="badge-usd">USD</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain-section">
+  <div class="section-inner">
+    <span class="section-label fade-up">Does this sound familiar?</span>
+    <h2 class="section-title fade-up">You love them.<br>But something <em>doesn't feel right.</em></h2>
+    <p class="pain-intro fade-up">
+      You answered those 12 questions honestly. Which means some of these probably felt uncomfortably familiar:
+    </p>
+    <ul class="pain-list">
+      <li class="pain-item">
+        <span class="pain-dot"></span>
+        <span class="pain-text"><strong>You think about your relationship constantly</strong> but still don't have clarity on what you're actually feeling.</span>
+      </li>
+      <li class="pain-item">
+        <span class="pain-dot"></span>
+        <span class="pain-text"><strong>You work hard to keep the peace</strong> — even when it costs you your own needs.</span>
+      </li>
+      <li class="pain-item">
+        <span class="pain-dot"></span>
+        <span class="pain-text"><strong>You feel guilty or afraid</strong> to tell your partner what you really need.</span>
+      </li>
+      <li class="pain-item">
+        <span class="pain-dot"></span>
+        <span class="pain-text"><strong>You swing between moments of hope and emotional exhaustion</strong> — and you're tired of it.</span>
+      </li>
+      <li class="pain-item">
+        <span class="pain-dot"></span>
+        <span class="pain-text"><strong>You wonder if what you're experiencing is normal</strong> or if something more serious is happening.</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- WHAT IS -->
+<section class="what-section">
+  <div class="section-inner">
+    <span class="section-label fade-up">What this guide is</span>
+    <h2 class="section-title fade-up">It doesn't tell you<br>what to do. It helps you<br><em>see clearly.</em></h2>
+    <p class="what-desc fade-up">
+      Healthy or Harmful is a 99-page guide for honest reflection. It was created for people who are emotionally confused — not to push you toward a decision, but to help you understand what you're actually living.
+    </p>
+    <div class="features-grid fade-up">
+      <div class="feature-card">
+        <div class="feature-number">01</div>
+        <div class="feature-title">Emotional Signs You May Be Missing</div>
+        <div class="feature-desc">Recognize patterns of emotional exhaustion that often go unnoticed until they've been going on for a long time.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-number">02</div>
+        <div class="feature-title">Common Relationship Dynamics</div>
+        <div class="feature-desc">Clear, non-clinical explanations of the patterns that leave you feeling confused, small, or stuck.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-number">03</div>
+        <div class="feature-title">Reflection Questions That Go Deep</div>
+        <div class="feature-desc">Thoughtful questions designed to help you sort through what you're feeling — without judgment or pressure.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-number">04</div>
+        <div class="feature-title">Short Practical Exercises</div>
+        <div class="feature-desc">Simple tools to help you reconnect with what you actually need — so you can start trusting yourself again.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="section-inner">
+    <span class="section-label fade-up">What readers say</span>
+    <h2 class="section-title fade-up">Words from people<br>who've <em>been there.</em></h2>
+  </div>
+  <div class="testimonials-grid" style="margin-top:60px; max-width:1100px; margin-left:auto; margin-right:auto;">
+    <div class="testimonial-card fade-up">
+      <p class="testimonial-text">It helped me put into words what I had been feeling for months. I finally understood why I felt so exhausted.</p>
+      <span class="testimonial-name">— Sarah, 34</span>
+    </div>
+    <div class="testimonial-card fade-up">
+      <p class="testimonial-text">It didn't tell me what to do — but it helped me see things more clearly than I had in years.</p>
+      <span class="testimonial-name">— Michelle, 29</span>
+    </div>
+    <div class="testimonial-card fade-up">
+      <p class="testimonial-text">I felt supported through every page. No judgment, no extreme answers. Just honest, gentle clarity.</p>
+      <span class="testimonial-name">— Laura, 41</span>
+    </div>
+    <div class="testimonial-card fade-up">
+      <p class="testimonial-text">The reflection exercises made me face things I'd been avoiding for a long time. It was hard — but exactly what I needed.</p>
+      <span class="testimonial-name">— Amanda, 37</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IS PETER -->
+<section class="who-section">
+  <div class="section-inner">
+    <span class="section-label fade-up">Who's behind this guide</span>
+    <div class="who-inner">
+      <div class="who-left fade-up">
+        <div class="author-avatar">
+          <span class="author-initials">PH</span>
+        </div>
+        <div class="author-name">Peter Hayes</div>
+        <div class="author-role">Relationship Guide</div>
+      </div>
+      <div class="who-text fade-up">
+        <p>
+          For a long time, I was in a relationship I couldn't quite understand. Not violent, not obviously broken — but something felt off in a way I couldn't name. I kept telling myself it would get better. I kept working harder to make it work.
+        </p>
+        <p>
+          It took me years to realize that the confusion itself was the signal. That not being able to name what was wrong didn't mean nothing was wrong.
+        </p>
+        <p>
+          I created this guide because I wish I'd had something like it back then — something that wasn't a diagnosis, wasn't a verdict, but just helped me slow down and look honestly at what I was living.
+        </p>
+        <p>
+          I'm not here to tell you what decision to make. I'm here to help you see your situation clearly — so you can decide for yourself.
+        </p>
+        <div class="divider"></div>
+        <p style="font-size:13px; color:var(--light-mid);">
+          Questions? Reach me at <a href="/cdn-cgi/l/email-protection#e1918495849389809884928694888584a1868c80888dcf828e8c" style="color:var(--terracotta); text-decoration:none;"><span class="__cf_email__" data-cfemail="0d7d6879687f656c74687e6a786469684d6a606c6461236e6260">[email&#160;protected]</span></a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EBOOK DEPTH -->
+<section class="bonuses-section">
+  <div class="section-inner">
+    <span class="section-label fade-up">What the quiz couldn't show you</span>
+    <h2 class="section-title fade-up">Your results were a signal.<br><em>This guide is the answer.</em></h2>
+    <p class="what-desc fade-up" style="color:rgba(250,247,242,0.65); margin-bottom:60px; max-width:620px;">
+      The 12 questions you just answered revealed patterns. But patterns need context — why they happen, how they work, and what they mean for you specifically. That's what these 99 pages are for.
+    </p>
+  </div>
+  <div class="bonuses-grid" style="max-width:1100px; margin:0 auto 0;">
+    <div class="bonus-card fade-up">
+      <div class="bonus-number">01</div>
+      <div class="bonus-title">Understand the patterns behind your answers</div>
+      <div class="bonus-desc">Each dynamic you identified in the quiz — emotional withdrawal, self-silencing, walking on eggshells — is explained in depth so you can finally name what you've been living.</div>
+    </div>
+    <div class="bonus-card fade-up">
+      <div class="bonus-number">02</div>
+      <div class="bonus-title">Go beyond the score</div>
+      <div class="bonus-desc">A score tells you something is off. This guide helps you understand why it feels so hard to see clearly when you're inside it — and why that confusion is not your fault.</div>
+    </div>
+    <div class="bonus-card fade-up">
+      <div class="bonus-number">03</div>
+      <div class="bonus-title">Reflection exercises that go deep</div>
+      <div class="bonus-desc">Not just information — guided questions and short exercises throughout the 99 pages that help you apply every concept to your own specific situation.</div>
+    </div>
+    <div class="bonus-card fade-up">
+      <div class="bonus-number">04</div>
+      <div class="bonus-title">Read at your own pace, return when you need to</div>
+      <div class="bonus-desc">This isn't a book you read once. It's a reference you come back to — whenever you feel confused, whenever you need to reconnect with what you actually feel.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHO -->
+<section class="forwho-section">
+  <div class="section-inner">
+    <span class="section-label fade-up">Is this for you?</span>
+    <h2 class="section-title fade-up">This guide was made<br>for <em>specific people.</em></h2>
+  </div>
+  <div class="forwho-grid" style="max-width:1100px; margin:60px auto 0;">
+    <div class="forwho-card yes fade-up">
+      <span class="forwho-card-label">This is for you if...</span>
+      <ul class="forwho-list">
+        <li><span class="marker">✓</span> You feel something isn't right but can't fully put it into words</li>
+        <li><span class="marker">✓</span> Your emotions feel all over the place and decisions feel impossible</li>
+        <li><span class="marker">✓</span> You want clarity before you talk, decide, or take action</li>
+        <li><span class="marker">✓</span> You need a safe, honest space to think things through</li>
+      </ul>
+    </div>
+    <div class="forwho-card no fade-up">
+      <span class="forwho-card-label">This is not...</span>
+      <ul class="forwho-list">
+        <li><span class="marker">—</span> A clinical diagnosis or professional therapy</li>
+        <li><span class="marker">—</span> A manual to fix or change your partner</li>
+        <li><span class="marker">—</span> A list of absolute answers or judgments</li>
+        <li><span class="marker">—</span> A magic solution that replaces inner work</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="guarantee-section">
+  <div class="guarantee-inner fade-up">
+    <div class="guarantee-icon">🛡</div>
+    <h3 class="guarantee-title">7-Day Peace of Mind Guarantee</h3>
+    <p class="guarantee-text">
+      I want you to feel completely safe taking this step. If after reading the guide you feel it didn't help you, didn't connect with you, or simply wasn't what you expected — send me a message within 7 days and I'll refund 100% of your money. No questions, no hassle.
+    </p>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+  <h2 class="cta-title fade-up">
+    You've been carrying<br>this long enough.<br><em>Give yourself clarity.</em>
+  </h2>
+  <p class="cta-sub fade-up">
+    One honest read can change how you see everything. Start today — at your own pace, on your own terms.
+  </p>
+  <div class="cta-box fade-up">
+    <div class="cta-price">Get the complete 99-page guide for <strong>$12</strong></div>
+    <a href="https://pay.hotmart.com/L104437166I" class="cta-button">Yes, I Want Clarity</a>
+    <p style="font-size:12px; color:rgba(250,247,242,0.3); letter-spacing:1px;">Instant PDF download · 7-day guarantee · No subscription</p>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-brand">© 2026 Peter Hayes | Relationship Guide</span>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms</a>
+    <a href="/cdn-cgi/l/email-protection#8bfbeeffeef9e3eaf2eef8ecfee2efeecbece6eae2e7a5e8e4e6">Contact</a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Scroll animations
+  const ob
